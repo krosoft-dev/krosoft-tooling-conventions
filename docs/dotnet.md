@@ -13,6 +13,30 @@
 - Pour comprendre un package NuGet (Krosoft ou autre), chercher d'abord ses sources si elles sont disponibles
   (repo cloné en local, repo public), avant de décompiler la DLL ou de fouiller le cache NuGet.
 
+## Packages Krosoft.Extensions
+Avant d'ajouter une dépendance tierce ou d'écrire de la plomberie, vérifier si un package `Krosoft.Extensions.*`
+couvre déjà le besoin :
+
+| Besoin | Package |
+|--------|---------|
+| Commands / queries, behaviors MediatR (validation, identité) | `Cqrs` (`.Behaviors`, `.Behaviors.Validations`, `.Behaviors.Identity`) |
+| Repositories + UnitOfWork EF Core | `Data` (`.EntityFramework.PostgreSql`, `.SqlServer`, `.Sqlite`, `.InMemory`) |
+| Validation FluentValidation | `Validations` |
+| Mapping AutoMapper | `Mapping` |
+| Minimal APIs `IEndpoint`, middlewares, Swagger, health checks | `WebApi` (`.Swagger`, `.HealthChecks`, `.Identity`) |
+| JWT, utilisateur courant | `Identity` |
+| Cache mémoire ou Redis | `Cache` (`.Memory`, `.Distributed.Redis`) |
+| Verrou distribué | `Blocking` (`.Memory`, `.Redis`) ; middleware : `WebApi.Blocking` |
+| Jobs planifiés | `Jobs.Hangfire` (storages InMemory / Redis) |
+| Retry et résilience HTTP | `Resilience` |
+| Options typées validées au démarrage | `Options` |
+| Événements | `Events` |
+| Envoi de mails | `Mail` (`.Mailjet`) |
+| PDF, export CSV, zip | `Pdf`, `Reporting.Csv`, `Zip` |
+| Reverse proxy | `Yarp` |
+| Logs, traces, métriques | `Observability` |
+| Classes de base de tests | `Testing` (`.Cqrs`, `.Data.EntityFramework`, `.WebApi`) |
+
 ## Style C#
 - Une seule classe par fichier.
 - Commentaire au-dessus d'une méthode ou d'une classe : `/// <summary>` (doc XML), jamais `//` ; les `//` sont
