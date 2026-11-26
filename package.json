@@ -4,9 +4,9 @@
   "description": "Krosoft shared code conventions for Claude Code",
   "type": "module",
   "files": [
-    "react.md",
-    "supabase.md",
-    "dotnet.md"
+    "docs/common.md",
+    "docs/react.md",
+    "docs/react-supabase.md"
   ],
   "repository": {
     "type": "git",

@@ -1,9 +1,6 @@
 # Conventions React — stack @krosoft/react
 
-> Source de vérité : package npm `@krosoft/tooling-conventions` (`react.md`). À consommer via
-> `@node_modules/@krosoft/tooling-conventions/react.md` dans le `CLAUDE.md` du repo, sans copie. Toute modification
-> passe par une PR sur `krosoft-tooling-conventions` puis une publication. Ce qui est propre à un repo va dans
-> son `CLAUDE.md`, jamais ici.
+> Conventions des frontends React construits sur `@krosoft/react`.
 
 ## Stack
 - **React 19** + **TypeScript** (strict) + **Vite** (`@vitejs/plugin-react-swc`), npm, app unique (pas de monorepo)
@@ -39,13 +36,18 @@ src/
 - Composants : `PascalCase.tsx`, un seul composant par fichier, export nommé en arrow function
   (`export const AddRoleDialog = (...) =>`) ; seules les pages sont en `export default`.
 - Composants transverses de l'app préfixés `App` : `AppHeader`, `AppFormField`.
-- Props typées via `interface {Component}Props`.
+- Props typées via `type {Component}Props`.
 - Hooks : `use{Xxx}.ts` (`.tsx` s'ils rendent du JSX).
 - Hooks API : `use{Entity}` (query), `use{Entities}Table` (liste paginée), `use{Entity}Manager` (mutations),
   `use{Entities}PickList`.
 - Autres fichiers : suffixe en minuscules (`http.service.ts`, `auth.context.ts`, `role.schema.ts`, `article.helper.ts`).
 - Imports via l'alias `@/` ; imports Krosoft toujours par sous-chemin (`@krosoft/react/hooks`,
   `@krosoft/core/helpers`), jamais d'import racine.
+
+## TypeScript
+- `type` plutôt qu'`interface` quand l'héritage n'est pas nécessaire.
+- Pas de `any` : `unknown` si le type est vraiment indéterminé.
+- `async/await` plutôt que `.then()/.catch()` ; ESM (`import/export`) uniquement.
 
 ## Appels API
 - Toujours `httpService.request<T>(ENDPOINTS.{domain}.{op}(...))`, jamais de `fetch` direct.
@@ -75,10 +77,16 @@ export function useArticle(articleId?: string) {
 - Toute clé ajoutée en `fr` l'est aussi en `en`.
 
 ## Packages @krosoft/*
-Les apps consomment les versions **publiées** sur npm. Lire les sources (repos `krosoft-packages`, `krosoft-tooling`) plutôt que deviner le comportement :
-- `@krosoft/core` (`krosoft-packages-core`) : helpers agnostiques (url/`buildUrl`,
+- `@krosoft/core` : helpers agnostiques (url/`buildUrl`,
   erreurs HTTP, dates, fichiers...) et types (`PaginationResult`, `SortOption`, `SelectOption`).
-- `@krosoft/react` (`krosoft-packages-react`) : primitives shadcn, composants core
+- `@krosoft/react` : primitives shadcn, composants core
   (dialogs, table, filters, inputs, tabs, navbar, layouts, cards, charts), hooks (`useTable`,
   `useNotifications`, `useDialog`...), preset Tailwind, tokens, i18n, PWA. Stories Storybook dans `stories/`.
-- `@krosoft/tooling-*` (`krosoft-tooling-*`) : configs ESLint, Prettier, tsconfig partagées.
+- `@krosoft/tooling-*` : configs ESLint, Prettier, tsconfig partagées.
+
+Pour comprendre un package npm (Krosoft ou autre), chercher d'abord ses sources si elles sont disponibles (repo
+cloné en local, repo public), avant de lire le code compilé dans `node_modules`.
+
+Ne jamais utiliser `npm link`, `yarn link` ni de dépendance `file:` pour tester un `@krosoft/*` : attendre la
+publication puis `npm install @krosoft/<pkg>@latest`. Si après la mise à jour le comportement ne correspond pas
+au code de `node_modules`, purger `node_modules/.vite` et redémarrer le dev server.

@@ -1,10 +1,6 @@
 # Conventions Supabase — stack @krosoft/react-supabase
 
-> Source de vérité : package npm `@krosoft/tooling-conventions` (`supabase.md`). Ce fichier complète `react.md`
-> pour les frontends React adossés à Supabase. À consommer via
-> `@node_modules/@krosoft/tooling-conventions/supabase.md` dans le `CLAUDE.md` du repo, sans copie. Toute
-> modification passe par une PR sur `krosoft-tooling-conventions` puis une publication. Ce qui est propre à un
-> repo va dans son `CLAUDE.md`, jamais ici.
+> Complément de `react.md` pour les frontends React adossés à Supabase.
 
 ## Ce qui remplace `react.md`
 - Les données se lisent et s'écrivent via le client Supabase (`supabase.from(...)`, `.rpc(...)`,
