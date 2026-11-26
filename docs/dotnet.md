@@ -19,6 +19,11 @@
   réservés au corps du code.
 - Records et primary constructors quand c'est pertinent.
 - Pattern matching et expressions `switch` plutôt que des `if/else` en cascade.
+- Namespaces file-scoped (`namespace X;`), namespace = chemin de dossier.
+- Nommage : `PascalCase` pour types, méthodes, propriétés et namespaces ; `camelCase` pour les variables
+  locales ; `_camelCase` pour les champs privés ; interfaces préfixées `I`.
+- Suffixe explicite selon le rôle : `*Handler`, `*Validator`, `*Service`, `*Configuration`, `*Converter`,
+  `*Extensions`.
 
 ## Commands et Queries
 ```csharp
