@@ -20,3 +20,21 @@
   le preset, pas en local.
 - Les montées de version passent par les PR Renovate (packages Krosoft toujours sur la dernière version). Bump
   manuel seulement quand un fix publié est attendu tout de suite.
+
+## Documentation (`docs/`)
+```
+docs/
+├── conventions/                   # copies des conventions (repos .NET ; les fronts importent depuis node_modules)
+├── features/{feature}.md          # fonctionnement d'une fonctionnalité livrée
+├── plans/{chantier}/              # README.md (objectif, découpage) + lot-{n}-{slug}.md
+├── adrs/{projet}-{nnn}-{slug}.md  # décisions d'architecture
+├── release-notes/{fr,en}.md       # notes de version destinées aux utilisateurs
+└── roadmap.md                     # ce qui reste à faire
+```
+- **features** : doc durable (règles métier, flux, choix techniques), mise à jour dans la même PR que le code.
+- **plans** : doc de travail d'un chantier en cours, un lot par fichier. Une fois le chantier livré, ce qui doit
+  durer passe dans `features/` ou un ADR, puis le plan est supprimé.
+- **adrs** : une décision par fichier, numérotée, avec statut (Proposé, Accepté, Rejeté, Déprécié par...).
+- **release-notes** : une entrée par livraison visible, la plus récente en haut, titre `## yyyy-MM-dd HH:mm - Titre`,
+  texte orienté utilisateur ; `fr.md` et `en.md` mis à jour ensemble.
+- **roadmap** : ne liste que le restant ; un élément livré en sort (et passe dans les release notes).
