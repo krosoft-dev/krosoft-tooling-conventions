@@ -6,7 +6,8 @@
   "files": [
     "docs/common.md",
     "docs/react.md",
-    "docs/react-supabase.md"
+    "docs/react-supabase.md",
+    "docs/vue2.md"
   ],
   "repository": {
     "type": "git",

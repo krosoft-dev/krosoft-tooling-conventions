@@ -14,6 +14,7 @@ Ce qui est propre à un repo reste dans son propre `CLAUDE.md`.
 | `docs/common.md`         | Règles communes à tous les repos, quel que soit le langage (Renovate...) |
 | `docs/react.md`          | Frontends React sur `@krosoft/react`                                     |
 | `docs/react-supabase.md` | Complément de `react.md` pour les frontends adossés à Supabase           |
+| `docs/vue2.md`           | Frontends Vue 2.7 legacy en class components (Vuex, Vuetify 2)           |
 | `docs/dotnet.md`         | Socle des repos .NET (repo uniquement, hors package)                     |
 | `docs/dotnet-webapi.md`  | Complément de `dotnet.md` pour les APIs (repo uniquement, hors package)  |
 
