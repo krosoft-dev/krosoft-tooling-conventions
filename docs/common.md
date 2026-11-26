@@ -38,3 +38,10 @@ docs/
 - **release-notes** : une entrée par livraison visible, la plus récente en haut, titre `## yyyy-MM-dd HH:mm - Titre`,
   texte orienté utilisateur ; `fr.md` et `en.md` mis à jour ensemble.
 - **roadmap** : ne liste que le restant ; un élément livré en sort (et passe dans les release notes).
+
+## CLAUDE.md des repos
+Sections dans cet ordre :
+1. Description du projet : titre et contexte en quelques lignes.
+2. `## Conventions` : les imports des conventions partagées, juste après la description.
+3. `## Exceptions aux conventions` : uniquement les écarts aux conventions importées, ou « Aucune. ».
+4. Les sections propres au repo qui ne dérogent à aucune convention (à savoir, docs, notes de version...).

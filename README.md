@@ -25,12 +25,27 @@ npm i -D @krosoft/tooling-conventions
 
 ## Usage
 
-Dans le `CLAUDE.md` du repo, importer les fichiers utiles :
+Dans le `CLAUDE.md` du repo, importer les fichiers utiles dans la section `## Conventions`, juste après la
+description du projet (ordre fixé par `common.md`) :
 
 ```markdown
+# Mon projet
+
+Contexte du projet.
+
+## Conventions
+
 @node_modules/@krosoft/tooling-conventions/docs/common.md
 @node_modules/@krosoft/tooling-conventions/docs/react.md
 @node_modules/@krosoft/tooling-conventions/docs/react-supabase.md
+
+## Exceptions aux conventions
+
+Aucune.
+
+## À savoir
+
+Règles propres au repo.
 ```
 
 Les mises à jour arrivent par Renovate, sans copie dans le repo.
@@ -38,8 +53,8 @@ Les mises à jour arrivent par Renovate, sans copie dans le repo.
 ## Repos .NET (sans `node_modules`)
 
 `docs/dotnet.md` et `docs/dotnet-webapi.md` ne sont pas publiés dans le package npm. Les copier, avec
-`docs/common.md`, depuis ce repo GitHub dans `docs/conventions/` de chaque repo .NET et les importer depuis le
-`CLAUDE.md` :
+`docs/common.md`, depuis ce repo GitHub dans `docs/conventions/` de chaque repo .NET et les importer dans la
+section `## Conventions` du `CLAUDE.md` :
 
 ```markdown
 @docs/conventions/common.md
