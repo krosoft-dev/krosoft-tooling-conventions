@@ -49,6 +49,9 @@ couvre déjà le besoin :
 - Booléens préfixés par leur sens : `Use…` pour une option activable (`UseNewIcon`, `UseClusterIcons`),
   `Is…` / `Has…` pour un état (`IsVisible`, `HasLogo`) ; jamais de nom nu (`ClusterIcons`). Même nom en
   `camelCase` côté front.
+- Enums suffixés `Code` (`TenantStatusCode`), valeurs explicites à partir de 1 (0 réservé à « non renseigné »),
+  propriété du même suffixe (`StatusCode`). Stockés en int par défaut, en string (`HasConversion<string>()`)
+  seulement si la base est lue hors de l'application ; sérialisés en nombre dans l'API.
 - Suffixe explicite selon le rôle : `*Handler`, `*Validator`, `*Service`, `*Configuration`, `*Converter`,
   `*Extensions`.
 
