@@ -44,6 +44,42 @@ src/
 - Imports via l'alias `@/` ; imports Krosoft toujours par sous-chemin (`@krosoft/react/hooks`,
   `@krosoft/core/helpers`), jamais d'import racine.
 
+## Page `/info`
+Chaque front expose une route publique `/info` (hors authentification, déclarée avant toute route dynamique
+comme `/:id`) qui affiche la version, la date de build et l'environnement ; `/info?format=json` renvoie le JSON
+brut. Elle sert à vérifier quel build tourne réellement en prod.
+
+- `vite.config.ts` :
+  ```ts
+  define: {
+    __APP_VERSION__: JSON.stringify(process.env.npm_package_version ?? "0.0.0"),
+    __BUILD_DATE__: JSON.stringify(new Date().toISOString()),
+    __APP_ENV__: JSON.stringify(mode),
+  },
+  ```
+- `src/vite-env.d.ts` : `declare const __APP_VERSION__: string;` (idem `__BUILD_DATE__`, `__APP_ENV__`).
+- `src/pages/Info.tsx` :
+  ```tsx
+  const info = { version: __APP_VERSION__, buildDate: __BUILD_DATE__, environment: __APP_ENV__ };
+
+  export function Info() {
+    const [searchParams] = useSearchParams();
+    const isJsonFormat = searchParams.get("format") === "json";
+
+    useEffect(() => {
+      if (isJsonFormat) {
+        document.body.innerHTML = JSON.stringify(info);
+      }
+    }, [isJsonFormat]);
+
+    if (isJsonFormat) {
+      return null;
+    }
+
+    return <pre style={{ fontFamily: "monospace", padding: "1rem" }}>{JSON.stringify(info, null, 2)}</pre>;
+  }
+  ```
+
 ## TypeScript
 - `type` plutôt qu'`interface` quand l'héritage n'est pas nécessaire.
 - Pas de `any` : `unknown` si le type est vraiment indéterminé.
