@@ -46,6 +46,9 @@ couvre déjà le besoin :
 - Namespaces file-scoped (`namespace X;`), namespace = chemin de dossier.
 - Nommage : `PascalCase` pour types, méthodes, propriétés et namespaces ; `camelCase` pour les variables
   locales ; `_camelCase` pour les champs privés ; interfaces préfixées `I`.
+- Booléens préfixés par leur sens : `Use…` pour une option activable (`UseNewIcon`, `UseClusterIcons`),
+  `Is…` / `Has…` pour un état (`IsVisible`, `HasLogo`) ; jamais de nom nu (`ClusterIcons`). Même nom en
+  `camelCase` côté front.
 - Suffixe explicite selon le rôle : `*Handler`, `*Validator`, `*Service`, `*Configuration`, `*Converter`,
   `*Extensions`.
 
